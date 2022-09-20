@@ -1,11 +1,17 @@
 import { Request, response, Response } from "express";
-import { insertAMovie, getAllMovies, getAMovie, updateAMovie, deleteAMovie } from "../services/movie";
+import {
+  insertAMovie,
+  getAllMovies,
+  getAMovie,
+  updateAMovie,
+  deleteAMovie,
+} from "../services/movie";
 import { handelHttp } from "../utils/error.handle";
 
 const getMovie = async (/*{ body }:*/ req: Request, res: Response) => {
   try {
     const responsedItem = await getAMovie(req.params.id);
-    res.send(responsedItem)
+    res.send(responsedItem);
   } catch (error) {
     handelHttp(res, "ERROR_GETTING_ITEM");
   }
@@ -22,8 +28,8 @@ const getMovies = async (req: Request, res: Response) => {
 
 const updateMovie = async (req: Request, res: Response) => {
   try {
-    const responsedItem = await updateAMovie(req.params.id, req.body)
-    res.send(responsedItem)
+    const responsedItem = await updateAMovie(req.params.id, req.body);
+    res.send(responsedItem);
   } catch (error) {
     handelHttp(res, "ERROR_UPDATING_ITEM");
   }
