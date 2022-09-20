@@ -33,8 +33,9 @@ const MovieSchema = new Schema<Movie>(
       required: true,
     },
     likes: {
-      type: Number,
+      type: [String],
       required: true,
+      default:[]
     },
   },
   {

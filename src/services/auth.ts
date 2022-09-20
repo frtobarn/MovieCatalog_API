@@ -7,8 +7,7 @@ import { generateToken } from "../utils/jwt.handle";
 const registerNewUser = async ({
   email,
   password,
-  name,
-  description,
+  name
 }: User) => {
   const checkExist = await UserModel.findOne({ email });
 
@@ -19,8 +18,7 @@ const registerNewUser = async ({
   const registeredNewUser = UserModel.create({
     email,
     password: hashedPassword,
-    name,
-    description,
+    name
   });
 
   return registeredNewUser;

@@ -9,17 +9,13 @@ const UserSchema = new Schema<User>(
     },
     password: {
       type: String,
-      required: true,
+      required: true, 
     },
     email: {
       type: String,
       required: true,
       unique: true,
-    },
-    description: {
-      type: String,
-      default: "Without description",
-    },
+    }
   },
   {
     timestamps: true,

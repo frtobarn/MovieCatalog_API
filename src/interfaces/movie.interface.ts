@@ -6,5 +6,5 @@ export interface Movie {
   year: number;
   description: string;
   available: boolean;
-  likes: number;
+  likes: string[];
 }
