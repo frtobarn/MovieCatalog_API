@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getOrder } from "../controllers/orders";
+import { getOrders } from "../controllers/orders";
 import { checkJwt } from "../middlewares/sessions";
 
 const router = Router()
 
-router.get("/", checkJwt ,getOrder )
+router.get("/", checkJwt ,getOrders )
 
 export {router}

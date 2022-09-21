@@ -11,11 +11,7 @@ const OrderSchema = new Schema<Order>(
     description: {
       type: String,
       required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
+    }
   },
   {
     timestamps: true,

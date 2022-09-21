@@ -3,7 +3,7 @@ import { Movie } from "../interfaces/movie.interface";
 
 const MovieSchema = new Schema<Movie>(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
@@ -28,6 +28,15 @@ const MovieSchema = new Schema<Movie>(
       type: String,
       required: true,
     },
+    director:{
+      type:String,
+      required:true,
+    },
+    casting: {
+      type:[String],
+      required:true,
+      default:[]
+    },
     available: {
       type: Boolean,
       required: true,
@@ -44,6 +53,6 @@ const MovieSchema = new Schema<Movie>(
   }
 );
 
-const MovieModel = model("Peliculas", MovieSchema);
+const MovieModel = model("movies", MovieSchema);
 
 export default MovieModel;
