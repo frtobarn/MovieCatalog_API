@@ -12,20 +12,44 @@ const getAllMovies = async () => {
 };
 
 const getAMovie = async (id: String) => {
-  const responseItem = await MovieModel.findOne({ __id: id });
+  const responseItem = await MovieModel.findOne({ _id: id });
   return responseItem;
 };
 
 const updateAMovie = async (id: String, data: Movie) => {
-  const responseItem = await MovieModel.findOneAndUpdate({ __id: id }, data, {
-    new:true//True devuelve el objeto actualizado, si no el viejo
+  const responseItem = await MovieModel.findOneAndUpdate({ _id: id }, data, {
+    new: true, //True devuelve el objeto actualizado, si no el viejo
   });
   return responseItem;
 };
 
 const deleteAMovie = async (id: String) => {
-  const responseItem = await MovieModel.findOneAndDelete({ __id: id });
+  const responseItem = await MovieModel.findOneAndDelete({ _id: id });
   return responseItem;
 };
 
-export { insertAMovie, getAllMovies, getAMovie , updateAMovie, deleteAMovie};
+const getMoviesByGenre = async (genre: String) => {
+  const responseItems = await MovieModel.find({ class: genre });
+  return responseItems;
+};
+
+const getMoviesByYear = async (year: String) => {
+  const responseItems = await MovieModel.find({ year: year });
+  return responseItems;
+};
+
+const getMoviesByName = async (title: String) => {
+  const responseItems = await MovieModel.find({ title: title });
+  return responseItems;
+};
+
+export {
+  insertAMovie,
+  getAllMovies,
+  getAMovie,
+  updateAMovie,
+  deleteAMovie,
+  getMoviesByGenre,
+  getMoviesByName,
+  getMoviesByYear
+};

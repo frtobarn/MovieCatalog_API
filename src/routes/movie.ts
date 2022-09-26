@@ -5,6 +5,9 @@ import {
   getMovies,
   postMovie,
   updateMovie,
+  getMoviesGenres,
+  getMoviesTitle,
+  getMoviesYears,
 } from "../controllers/movie";
 import { logMiddleware } from "../middlewares/log";
 
@@ -19,5 +22,11 @@ router.post("/", postMovie);
 router.put("/:id", updateMovie);
 
 router.delete("/:id", deleteMovie);
+
+router.get("/genre/:genre", getMoviesGenres);
+
+router.get("/year/:year", getMoviesYears);
+
+router.get("/title/:title", getMoviesTitle);
 
 export { router };

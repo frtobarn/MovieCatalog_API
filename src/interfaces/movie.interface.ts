@@ -8,5 +8,5 @@ export interface Movie {
   director: string,
   casting: string[],
   available: boolean;
-  likes: string[];
+  likes: number;
 }

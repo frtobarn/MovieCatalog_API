@@ -18,7 +18,7 @@ const MovieSchema = new Schema<Movie>(
     class: {
       type: String,
       required: true,
-      enum: ["drama", "terror", "suspenso", "animación"],
+      enum: ["drama", "terror", "suspenso", "animación", "thriller"],
     },
     year: {
       type: Number,
@@ -42,9 +42,9 @@ const MovieSchema = new Schema<Movie>(
       required: true,
     },
     likes: {
-      type: [String],
+      type: Number,
       required: true,
-      default:[]
+      default:0
     },
   },
   {

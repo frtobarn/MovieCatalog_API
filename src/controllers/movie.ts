@@ -5,17 +5,11 @@ import {
   getAMovie,
   updateAMovie,
   deleteAMovie,
+  getMoviesByGenre,
+  getMoviesByName,
+  getMoviesByYear
 } from "../services/movie";
 import { handelHttp } from "../utils/error.handle";
-
-const getMovie = async (/*{ body }:*/ req: Request, res: Response) => {
-  try {
-    const responsedItem = await getAMovie(req.params.id);
-    res.send(responsedItem);
-  } catch (error) {
-    handelHttp(res, "ERROR_GETTING_ITEM");
-  }
-};
 
 const getMovies = async (req: Request, res: Response) => {
   try {
@@ -23,6 +17,15 @@ const getMovies = async (req: Request, res: Response) => {
     res.send(responsedItems);
   } catch (error) {
     handelHttp(res, "ERROR_GETTING_ITEMS");
+  }
+};
+
+const getMovie = async (req: Request, res: Response) => {
+  try {
+    const responsedItem = await getAMovie(req.params.id);
+    res.send(responsedItem);
+  } catch (error) {
+    handelHttp(res, "ERROR_GETTING_ITEM");
   }
 };
 
@@ -53,4 +56,41 @@ const deleteMovie = async (req: Request, res: Response) => {
   }
 };
 
-export { getMovie, getMovies, updateMovie, postMovie, deleteMovie };
+
+const getMoviesGenres = async (req: Request, res: Response) => {
+  try {
+    const responsedItems = await getMoviesByGenre(req.params.genre);
+    res.send(responsedItems);
+  } catch (error) {
+    handelHttp(res, "ERROR_GETTING_ITEM");
+  }
+};
+
+const getMoviesYears = async (req: Request, res: Response) => {
+  try {
+    const responsedItems = await getMoviesByYear(req.params.year);
+    res.send(responsedItems);
+  } catch (error) {
+    handelHttp(res, "ERROR_GETTING_ITEM");
+  }
+};
+
+const getMoviesTitle = async (req: Request, res: Response) => {
+  try {
+    const responsedItems = await getMoviesByName(req.params.title);
+    res.send(responsedItems);
+  } catch (error) {
+    handelHttp(res, "ERROR_GETTING_ITEM");
+  }
+};
+
+export {
+  getMovie,
+  getMovies,
+  updateMovie,
+  postMovie,
+  deleteMovie,
+  getMoviesGenres,
+  getMoviesYears,
+  getMoviesTitle
+};
